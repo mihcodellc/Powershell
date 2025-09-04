@@ -92,6 +92,18 @@ Get-Process chrome | Format-List -Property p* # property name starting with p*
 Get-Process chrome | Select-object <property1>, <property2> #'Select-object' to choose the property correct name
 Get-Process chrome | sort-object -unique -descending -property <property1>, <property2>
 
+#process run form SQL for instance or  by another  user
+#===== PowerShell Processes (WMI) =====
+Get-WmiObject Win32_Process -Filter "Name='powershell.exe'" |    Select-Object ProcessId, CommandLine, Status
+#===== PowerShell Processes (CIM) ====="
+Get-CimInstance Win32_Process -Filter "Name='powershell.exe'" |  Select-Object ProcessId, CommandLine, Status
+#===== Current Session History with PID =====
+Get-History | Select-Object @{Name='PID';Expression={$pid}}, Id, CommandLine
+
+#kill identified process
+Stop-Process -Id 14340 -Force
+
+
 #excute win dos / cmd as admin
 powershell -command "start-Process cmd -verb runas"
 
@@ -453,3 +465,4 @@ EXEC xp_cmdshell @sql
 
 #get the hostname knowing IP address
 [System.Net.Dns]::GetHostEntry("8.8.8.8").HostName
+
