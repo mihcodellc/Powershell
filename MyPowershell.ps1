@@ -209,7 +209,7 @@ same goes for .bat, to run ps1 from batch ie command shell
 powershell.exe -File "d:\myscript.ps1" 
 exit 0
 
-##tsql for SQL Agent Job
+## run in tsql for SQL Agent Job
 declare @svrName varchar(255)
 declare @sql varchar(400)
 --by default it will take the current server name, we can the set the server name as well
@@ -465,4 +465,5 @@ EXEC xp_cmdshell @sql
 
 #get the hostname knowing IP address
 [System.Net.Dns]::GetHostEntry("8.8.8.8").HostName
+
 
