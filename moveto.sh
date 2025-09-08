@@ -3,7 +3,7 @@
 # Program:  move_sql002_back.sh
 # Host:     xxxxx  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Replace with name of dedicated storage server
 # Purpose:  Pull the jira database backup to permanent storage
-# Author:   Craig Yancey, Acompany DBA
+# Author:   Acompany DBA
 # Modified by Monktar Bello: handle for a new server and slight strategy
 #-----------------------------------------------------------------
 # Notes:    To be run by crontab a day after the backup is made.
