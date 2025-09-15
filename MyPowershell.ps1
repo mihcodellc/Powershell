@@ -214,7 +214,7 @@ declare @svrName varchar(255)
 declare @sql varchar(400)
 --by default it will take the current server name, we can the set the server name as well
 set @svrName = @@SERVERNAME
-set @sql = 'powershell.exe -File "S:\DBA\Maintenance\Restore_last_Full_Back.ps1"'
+set @sql = 'powershell.exe -File "C:\DBA\Restore_last_Full_Back.ps1"'
 EXEC xp_cmdshell @sql
 
 #store password encrypted in file
@@ -465,5 +465,6 @@ EXEC xp_cmdshell @sql
 
 #get the hostname knowing IP address
 [System.Net.Dns]::GetHostEntry("8.8.8.8").HostName
+
 
 
