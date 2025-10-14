@@ -305,6 +305,11 @@ C:\> "server1", "server1\nordwind", "server2" | Invoke-DbaQuery -File "C:\script
 Invoke-DbaQuery -SqlInstance server\instance -Query 'SELECT foo FROM bar'
 Invoke-DbaQuery -SqlInstance . -Query 'SELECT * FROM users WHERE Givenname = @name' -SqlParameter @{ Name = "Maria" }
 
+--query from powershell
+Invoke-Sqlcmd -Query "SELECT TOP 2  [BatchId] FROM MyTable" 
+-ServerInstance "mycloud.us-east-1.rds.amazonaws.com"  -Database  "myDB" -Username  mbello -Password 123456
+
+
 ##########begin script out object SP, Tables .... from server #####################
 # https://docs.dbatools.io/Export-DbaScript
 # https://docs.dbatools.io/New-DbaScriptingOption 
@@ -465,6 +470,7 @@ EXEC xp_cmdshell @sql
 
 #get the hostname knowing IP address
 [System.Net.Dns]::GetHostEntry("8.8.8.8").HostName
+
 
 
 
