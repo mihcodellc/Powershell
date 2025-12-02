@@ -1,3 +1,5 @@
+#Part 1  : dbatools
+
 #Powershell install - No match was found for the specified search criteria and module name 'dbatools'
 #source: https://stackoverflow.com/questions/63385304/powershell-install-no-match-was-found-for-the-specified-search-criteria-and-mo
 
@@ -16,3 +18,19 @@ Register-PSRepository -Default
 #6.Install-Module dbatools (check Find-Module before to validate)
 Find-Module dbatools
 Install-Module dbatools -Scope CurrentUser #Use -Force switch if an older version of dbatools exists.
+
+
+#Part 2:
+
+Get-InstalledModule dbachecks 
+error: PackageManagement\Get-Package : No match was found for the specified search criteria and module names 'dbachecks'
+
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+
+Install-Module dbachecks -Force # -Scope AllUsers 
+
+Get-InstalledModule dbachecks
+
+Get-Command -Module dbachecks
+
+
