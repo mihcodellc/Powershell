@@ -24,6 +24,25 @@ Install-Module -Name SqlServer -Scope CurrentUser
 Install-Module dbatools -Scope CurrentUser
 Install-Module dbatools -Force -SkipPublisherCheck
 
+Then
+
+dbachecks is a framework created by and for SQL Server pros who need to 
+validate their environments. Basically, we all share similar checklists and 
+mostly just the server names and RPO/RTO/etc change
+requires
+	dbatools
+	PSFramework
+	Install-Module Pester
+	
+ Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+ Install-Module dbachecks -Scope AllUsers -Force
+ Get-InstalledModule dbachecks
+
+ more at 
+ 	https://dbatools.io/dbachecks-commands/
+ 	https://dbachecks.readthedocs.io/en/latest/#prerequisites
+
+
 #if not installing copy to C:\Program Files\WindowsPowerShell\Modules from a computer where is installed 
 #dbatools
 #dbatools.library
@@ -472,6 +491,7 @@ EXEC xp_cmdshell @sql
 
 #get the hostname knowing IP address
 [System.Net.Dns]::GetHostEntry("8.8.8.8").HostName
+
 
 
 
