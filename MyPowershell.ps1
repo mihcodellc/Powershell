@@ -22,6 +22,7 @@ get-module -listavailable
 #https://learn.microsoft.com/en-us/sql/powershell/download-sql-server-ps-module?view=sql-server-ver16
 Install-Module -Name SqlServer -Scope CurrentUser
 Install-Module dbatools -Scope CurrentUser
+Install-Module dbatools -Force -SkipPublisherCheck
 
 #if not installing copy to C:\Program Files\WindowsPowerShell\Modules from a computer where is installed 
 #dbatools
@@ -470,6 +471,7 @@ EXEC xp_cmdshell @sql
 
 #get the hostname knowing IP address
 [System.Net.Dns]::GetHostEntry("8.8.8.8").HostName
+
 
 
 
