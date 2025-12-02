@@ -76,6 +76,7 @@ help 'cmd name' | Get-Member
 ls --list
 ls  | select-object name | out-file -append G:\myback.txt # list the name of files then addthen to a file
 cls -- clear
+ls | | out-GridView # windows helpful instead of out-file
 
 # choose the ouput onlist or table: Format-Table or Format-List
 Get-Process chrome | Format-List # or Format-Table
@@ -471,6 +472,7 @@ EXEC xp_cmdshell @sql
 
 #get the hostname knowing IP address
 [System.Net.Dns]::GetHostEntry("8.8.8.8").HostName
+
 
 
 
