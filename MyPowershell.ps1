@@ -41,6 +41,14 @@ requires
  more at 
  	https://dbatools.io/dbachecks-commands/
  	https://dbachecks.readthedocs.io/en/latest/#prerequisites
+	you may need to run
+		Install-Module Pester -SkipPublisherCheck -Force -RequiredVersion 4.10.1
+		Import-Module Pester -Force -RequiredVersion 4.10.1
+
+	Get-DbcConfig -- Export-DbcConfig / Import-DbcConfig
+	Get-DbcCheck
+	# Set the servers you'll be working with or -SqlInstance parameter
+	Set-DbcConfig -Name app.sqlinstance -Value sql2016, sql2017, sql2008, sql2008\express
 
 
 #if not installing copy to C:\Program Files\WindowsPowerShell\Modules from a computer where is installed 
@@ -491,6 +499,7 @@ EXEC xp_cmdshell @sql
 
 #get the hostname knowing IP address
 [System.Net.Dns]::GetHostEntry("8.8.8.8").HostName
+
 
 
 
