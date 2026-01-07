@@ -118,3 +118,42 @@ Get-Service -Name 'MSSQL$SQLEXPRESS' | Start-Service -Verbose
 #get status on sql serverservice : AFTER
 Get-Service -Name '*sql*' | SELECT-OBJECT NAME, status
 
+
+# ***************1/7/2027 for patching
+#set the variables
+$cred = Get-Credential
+$myserver = @('SERV1','SERV2','SERV3','SERV4', 'SERV5')
+
+# check version and name
+ $myserver | ForEach-Object  {
+ $sqlCn = Connect-DbaInstance -SqlInstance $_ -SqlCredential $cred -database Master -TrustServerCertificate
+
+ invoke-dbaquery -sqlinstance $sqlcn -query 'Select @@version as [version],  @@SERVERNAME as servername;'
+ }
+
+ # restart/stop VM
+ Invoke-Command -ComputerName $myserver -Credential $cred -ScriptBlock {
+     Restart-Computer -Force -Confirm:$false
+ } -AsJob
+
+ #start/ stop sql services
+ $myserver | Get-DbaService | where { $_.ServiceType -in ('Browser', 'engine') } | stop-DbaService
+
+ #install patch
+ Install-DbaInstance -ComputerName [MyVM_Name] -credential $cred -Version 2019 -Path "C:\DBA\SQL_Patches\SQLServer2019-KB5068404-x64.exe"
+
+
+#copy file if you have permission on via remote call
+Invoke-Command -ComputerName TRANSFORM121 -Credential $cred -ScriptBlock {
+    Copy-Item "\\sharedFolder\backup\sql_upgrades\SQLServer2019.exe" "C:\DBA\SQL_Patches\" -Force
+}
+
+#check the path of exe
+Invoke-Command -ComputerName $myserver -ScriptBlock {
+     Write-Host "Checking on $env:COMPUTERNAME"
+	 whoami
+ Test-Path -Path "C:\DBA\SQL_Patches"
+ Test-Path "\\sql-backups\backup\sql_upgrades\SQLServer2019.exe"
+ }
+
+
