@@ -110,7 +110,7 @@ if ($is_restored -eq 'Yes') {
 ##restore from the localhost  S:\DBA\maintenance\RestoreBackUpFromDirectory.ps1
     # Log the progress to a file
 	"$db_name will be restored. " | Out-File -Append -FilePath $logFile			 
-	.\RestoreBackUpFromDirectory.ps1 $backup_Type $db_name $destina
+	.\RestoreBackUpFromDirectory.ps1 $backup_Type $db_name $destina $ServerName
  }
 
 
