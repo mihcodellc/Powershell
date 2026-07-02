@@ -85,7 +85,9 @@ Update-Help -UICulture en-US -Verbose #just english's help
 Get-Command -Noun a-noun*
 Get-Command -Verb a-verb*
 Get-Command -Verb a-verb* -Noun a-noun*
-
+Get-Command -Module Az.Sql | where-Object { $_.Name -like "*Database*" -and $_.CommandType -eq 'Cmdlet' -and $_.Name.Length -lt 25 }
+ Get-Command -Module Az.Sql | get-member # for columns' names
+Get-Command -Module Az.Sql | select-object name
 Get-Command -ParameterType 'a type' # type get from the output of Get-Member
 									#learn more about 'a type' ex: String, Process 
 
