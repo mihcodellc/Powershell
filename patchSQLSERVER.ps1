@@ -139,9 +139,17 @@ $myserver = @('SERV1','SERV2','SERV3','SERV4', 'SERV5')
  #start/ stop sql services
  $myserver | Get-DbaService | where { $_.ServiceType -in ('Browser', 'engine') } | stop-DbaService
 
- #install patch
- Install-DbaInstance -ComputerName [MyVM_Name] -credential $cred -Version 2019 -Path "C:\DBA\SQL_Patches\SQLServer2019-KB5068404-x64.exe"
+#sql service status
+$myserver | Get-DbaService | where { $_.ServiceType -in ('Browser', 'engine') } | Select-Object @{
+    Name='ServerInfo'
+    Expression={
+        "$($_.ComputerName) - $($_.ServiceName) - $($_.State)"
+    }
+}
 
+ #install upgrade/patch
+Install-DbaInstance -ComputerName [MyVM_Name] -credential $cred -Version 2019 -Path "C:\DBA\SQL_Patches\SQLServer2019-KB5068404-x64.exe"
+Update-DbaInstance -ComputerName $ServerName -Restart -Path $PathCU -Credential $Credential -Confirm:$false -verbose | out-file sqlpatch.log -Force
 
 #copy file if you have permission on via remote call
 Invoke-Command -ComputerName TRANSFORM121 -Credential $cred -ScriptBlock {
