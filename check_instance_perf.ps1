@@ -18,6 +18,7 @@
 | Processor Queue Length     | < 2 per logical CPU         | Moderate     | Sustained high   |
 | SQL Lock Waits/sec         | Near zero                   | Increasing   | Sustained high   |
 
+# log with log_instance_perf.ps1
 
 write-host "**************CPU************"
 Get-Counter '\Processor(*)\% Processor Time'
