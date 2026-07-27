@@ -2,6 +2,23 @@
 
 # https://www.mssqltips.com/sqlservertip/5114/sql-server-performance-troubleshooting-system-health-checklist/
 
+# guidelines for Expert combined to microsoft docs but track your own environment
+
+| Performance Counter        | Good                        | Warning      | Critical         |
+| -------------------------- | --------------------------- | ------------ | ---------------- |
+| CPU % Processor Time       | < 70% average               | 70–85%       | > 85% sustained  |
+| Available Memory           | > 20% free RAM              | 10–20%       | < 10%            |
+| Page Life Expectancy (PLE) | Stable/high                 | Sudden drops | Persistently low |
+| Buffer Cache Hit Ratio     | > 95%                       | 90–95%       | < 90%            |
+| SQL Compilations/sec       | < 10% of Batch Requests/sec | Higher       | Very high        |
+| Batch Requests/sec         | Workload-dependent          | —            | —                |
+| Avg. Disk sec/Read         | < 10 ms                     | 10–20 ms     | > 20 ms          |
+| Avg. Disk sec/Write        | < 10 ms                     | 10–20 ms     | > 20 ms          |
+| Disk Queue Length          | < number of spindles        | Moderate     | Sustained high   |
+| Processor Queue Length     | < 2 per logical CPU         | Moderate     | Sustained high   |
+| SQL Lock Waits/sec         | Near zero                   | Increasing   | Sustained high   |
+
+
 write-host "**************CPU************"
 Get-Counter '\Processor(*)\% Processor Time'
 
