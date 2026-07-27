@@ -1,6 +1,35 @@
 $Server = "localhost"
 $Database = "DBA"
 
+USE DBA;
+# GO
+
+# create TABLE dbo.PerformanceCounters
+# (
+    # PerformanceCounterID BIGINT IDENTITY(1,1) PRIMARY KEY,
+
+    # CaptureTime          DATETIME2(0) NOT NULL DEFAULT(GETDATE()),
+    # ComputerName         SYSNAME      NOT NULL,
+
+    # ObjectName           NVARCHAR(128) NOT NULL,
+    # CounterName          NVARCHAR(128) NOT NULL,
+    # InstanceName         NVARCHAR(128) NOT NULL DEFAULT 'ASP-SQL',
+
+    # CounterValue         FLOAT NOT NULL
+# );
+# GO
+
+# CREATE INDEX IX_PerformanceCounters_CaptureTime
+# ON dbo.PerformanceCounters(CaptureTime);
+
+# CREATE INDEX IX_PerformanceCounters_ObjectCounter
+# ON dbo.PerformanceCounters(ObjectName, CounterName);
+# GO
+
+
+
+# select * from dbo.PerformanceCounters
+
 $Counters = @(
     '\Processor(*)\% Processor Time',
 
