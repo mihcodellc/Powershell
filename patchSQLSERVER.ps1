@@ -124,11 +124,14 @@ Get-Service -Name '*sql*' | SELECT-OBJECT NAME, status
 $cred = Get-Credential
 $myserver = @('SERV1','SERV2','SERV3','SERV4', 'SERV5')
 
+#server IP
+$myserver | ForEach-Object { Resolve-DnsName -Name $_ }
+
 # check version and name
  $myserver | ForEach-Object  {
  $sqlCn = Connect-DbaInstance -SqlInstance $_ -SqlCredential $cred -database Master -TrustServerCertificate
 
- invoke-dbaquery -sqlinstance $sqlcn -query 'Select @@version as [version],  @@SERVERNAME as servername;'
+ invoke-dbaquery -sqlinstance $sqlcn -query 'Select substring(@@version, 26,47)+''/''+ @@SERVERNAME as serverVersion, create_date as last_restarted FROM sys.databases WHERE name = ''tempdb'';' | Select-Object serverVersion, last_restarted
  }
 
  # restart/stop VM
