@@ -21,6 +21,7 @@ get-module -listavailable
 #install sql modules: SqlServer & SQLPS
 #https://learn.microsoft.com/en-us/sql/powershell/download-sql-server-ps-module?view=sql-server-ver16
 Install-Module -Name SqlServer -Scope CurrentUser
+	Install-Module -Name SqlServer -Scope AllUsers -Force
 Install-Module dbatools -Scope CurrentUser
 Install-Module dbatools -Force -SkipPublisherCheck
 
