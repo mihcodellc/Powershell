@@ -7,6 +7,13 @@ Start-Process -FilePath "powershell" -Verb RunAs
 #programming in powershell
 https://learn.microsoft.com/en-us/powershell/scripting/lang-spec/chapter-01?view=powershell-7.3
 
+#install lastest powershell
+pwsh  # get the version or $PSVersionTable.PSVersion
+winget install --id Microsoft.PowerShell --source winget
+	or
+	https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows
+	use the same method (run $PSHOME to know)to install or install side by side
+	
 #installed Module
 Get-InstalledModule
 
