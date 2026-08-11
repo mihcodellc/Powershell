@@ -22,6 +22,17 @@
 
 write-host "**************CPU************"
 Get-Counter '\Processor(*)\% Processor Time'
+Get-Counter '\System\Processor Queue Length'
+
+Get-Counter '\Processor(_Total)\% Processor Time'
+
+
+write-host "**************Process************"
+
+Get-Counter '\Process(sqlservr)\Private Bytes'
+Get-Counter '\Process(sqlservr)\Working Set'
+Get-Counter '\Process(sqlservr)\% Processor Time'
+Get-Counter '\Process(sqlservr)\Thread Count'
 
 
 write-host "**************Memory************"
