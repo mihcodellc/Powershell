@@ -69,3 +69,18 @@ Get-Counter '\SQLServer:Buffer Manager\Page Life Expectancy'
 Get-Counter '\SQLServer:SQL Statistics\Batch Requests/sec'
 
 Get-Counter '\SQLServer:SQL Statistics\SQL Compilations/sec'
+
+
+write-host "**************ghost/version-store investigation************"
+
+
+Get-Counter `
+    '\SQLServer:Transactions\Free Space in tempdb (KB)',
+    '\SQLServer:Transactions\Version Generation rate (KB/s)',
+    '\SQLServer:Transactions\Version Cleanup rate (KB/s)',
+    '\SQLServer:Transactions\Version Store Size (KB)',
+    '\SQLServer:Transactions\Longest Transaction Running Time',
+    '\SQLServer:Transactions\Snapshot Transactions',
+    '\SQLServer:Transactions\Update Snapshot Transactions',
+    '\SQLServer:Transactions\NonSnapshot Version Transactions',
+    '\SQLServer:Transactions\Update conflict ratio'
