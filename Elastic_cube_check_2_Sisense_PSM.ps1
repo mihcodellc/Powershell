@@ -1,4 +1,4 @@
-# DBSUPPORT-5648
+# https://developer.sisense.com/guides/legacy/psm/#ecube-build
 # "Elastic_cube_check_2.ps1": check if failed, build it; if a dashboard passes a threshold of days or minutes (based on its schedule on sisense), it builds it
 # only between $startTime am and $endTime pm
 # source: "C:\DBA\Scripts\Elastic_cube_check_2.ps1"
