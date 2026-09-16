@@ -8,6 +8,7 @@
 # url for curl is depending on what API offers and you may have to use different API
 #jq is not jquery but jq is a lightweight and flexible command-line JSON processor. ref/tutorial at https://jqlang.github.io/jq/
 # allows used this -w "%{http_code}\n" before url passed for curl; it gives error code for search
+# note powershell "Elastic*"
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #update 10/28/2024 by Monktar Bello: get all matching cubes without looking at failed or stopped then build on condtions
